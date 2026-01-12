@@ -2,6 +2,16 @@ from fastapi import FastAPI
 
 app = FastAPI(title="BMI Calculator API")
 
+@app.get("/health", tags=["Health"])
+def health_check():
+    """
+    Simple health check endpoint to test connectivity.
+    """
+    return {
+        "status": "ok",
+        "message": "API is up and running"
+    }
+
 @app.get("/")
 def root():
     return {"message": "Welcome to BMI Calculator API"}
